@@ -39,9 +39,9 @@ public class Email {
     	
     	for(int i=0 ; i<newPassword.length() ; i++) {
     		char c = newPassword.charAt(i);
-    		if(c >= 'a' && c == 'z') lowerCase = true;
-    		else if (c >= 'A' && c == 'Z') upperCase = true;
-    		else if(c >= '0' && c == '9') digit = true;
+    		if(c >= 'a' && c <= 'z') lowerCase = true;
+    		else if (c >= 'A' && c <= 'Z') upperCase = true;
+    		else if(c >= '0' && c <= '9') digit = true;
     		else specialCharacter = true;
     	}
     	

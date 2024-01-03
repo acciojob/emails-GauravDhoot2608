@@ -4,29 +4,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-class Mail{
-	
-	Date date;
-	String sender;
-	String message;
-	
-	public Mail(Date date , String sender , String message) {
-		// TODO Auto-generated constructor stub
-		this.date = date;
-		this.sender = sender;
-		this.message = message;
-	}
-}
+
 
 public class Gmail extends Email {
 
     int inboxCapacity; //maximum number of mails inbox can store
     
     //Inbox: Stores mails. Each mail has date (Date), sender (String), message (String). It is guaranteed that message is distinct for all mails.
-    List<Mail> inbox ;
+    private List<Mail> inbox ;
     
     //Trash: Stores mails. Each mail has date (Date), sender (String), message (String)
-    List<Mail> trash ;
+    private List<Mail> trash ;
    
     public Gmail(String emailId, int inboxCapacity) {
     	super(emailId);
@@ -106,5 +94,19 @@ public class Gmail extends Email {
     public int getInboxCapacity() {
         // Return the maximum number of mails that can be stored in the inbox
     	return inboxCapacity;
+    }
+    
+    private class Mail{
+    	
+    	Date date;
+    	String sender;
+    	String message;
+    	
+    	public Mail(Date date , String sender , String message) {
+    		// TODO Auto-generated constructor stub
+    		this.date = date;
+    		this.sender = sender;
+    		this.message = message;
+    	}
     }
 }
