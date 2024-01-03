@@ -5,6 +5,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class Workspace extends Gmail{
 
@@ -31,7 +32,9 @@ public class Workspace extends Gmail{
     	LocalTime timeLimit;
     	
     	// sort the meeting according to their finiish time
-    	Collections.sort(calendar , (m1,m2) -> m1.getEndTime().compareTo(m2.getEndTime()));
+    	Collections.sort(calendar,(m1,m2)->{
+            return m1.getEndTime().compareTo(m2.getEndTime());
+        });
     	
     	Meeting firstMeeting = calendar.get(0);
     	timeLimit = firstMeeting.getEndTime();
@@ -46,5 +49,23 @@ public class Workspace extends Gmail{
     		}
     	}
     	return meetings.size();
+    }
+    
+    class mycomparator implements Comparator<Meeting> {
+        @Override 
+        public int compare(Meeting m1, Meeting m2){
+            if (m1.getEndTime().compareTo(m2.getEndTime())<0) {
+                // Return -1 if second object is
+                // bigger than first
+                return -1;
+            }
+            else if (m1.getEndTime().compareTo(m2.getEndTime())>0) {
+
+                // Return 1 if second object is
+                // smaller than first
+                return 1;
+            }
+            return 0;
+        }
     }
 }
